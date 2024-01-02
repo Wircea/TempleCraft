@@ -365,8 +365,8 @@ U0 PlaySoundEffect(U16 frq1, U16 frq2, F64 mS,U8 seType=SE_SWEEP)
     ns->ona1=Freq2Ona(frq1);
     ns->ona2=Freq2Ona(frq2);
    
-    CTask* t = Spawn(&SoundEffectTask,ns,"SoundEffect",1,Fs);
-    Spawn(&ResumeMusic,t,"MusicResume",1,Fs);
+    CTask* t = Spawn(&SoundEffectTask,ns,"SoundEffect",mp_cnt-1,Fs);
+    Spawn(&ResumeMusic,t,"MusicResume",mp_cnt-1,Fs);
 }
 
 //Draw a neat circle with set probability dither.
@@ -2087,7 +2087,7 @@ U0 Main()
   AssignBlockData;
   StartupMenu;
   DocCursor;
-  Spawn(&GameMusic,,"GameMusic",1,Fs);
+  Spawn(&GameMusic,,"GameMusic",mp_cnt-1,Fs);
 
   CDC *dc = DCAlias;
   Fs->draw_it=&DrawIt;
